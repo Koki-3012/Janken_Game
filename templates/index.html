@@ -9,21 +9,31 @@
 <body>
     <h1>じゃんけんゲーム</h1>
 
-    <form action="/play" method="post">
-        <label>あなたの選択：
-            <select name="choice">
-                <option value="rock">グー</option>
-                <option value="paper">パー</option>
-                <option value="scissors">チョキ</option>
-            </select>
-        </label>
-        <button type="submit">じゃんけんポン！</button>
+    <form id="janken-form" action="/play" method="post">
+        <div class="choices">
+            <label>
+                <input type="radio" name="choice" value="rock">
+                <img src="{{ url_for('static', filename='images/rock.png') }}" alt="Rock">
+            </label>
+
+            <label>
+                <input type="radio" name="choice" value="paper">
+                <img src="{{ url_for('static', filename='images/paper.png') }}" alt="Paper">
+            </label>
+
+            <label>
+                <input type="radio" name="choice" value="scissors">
+                <img src="{{ url_for('static', filename='images/scissors.png') }}" alt="Scissors">
+            </label>
+        </div>
     </form>
 
-    {% if user_choice %}
-        <p>あなたの選択: {{ user_choice }}</p>
-        <p>相手の選択: {{ computer_choice }}</p>
-        <p>結果: {{ result }}</p>
-    {% endif %}
+    <div id="result" style="display: none;">
+        <p>あなたの選択: <span id="user-choice"></span></p>
+        <p>相手の選択: <span id="computer-choice"></span></p>
+        <p>結果: <span id="game-result"></span></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
