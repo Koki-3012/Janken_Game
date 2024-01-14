@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', user_choice=None, computer_choice=None, result=None)
+
 
 @app.route('/play', methods=['POST'])
 def play():
