@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>じゃんけんゲーム</title>
+</head>
+<body>
+    <h1>じゃんけんゲーム</h1>
+
+    <form action="/play" method="post">
+        <label>あなたの選択：
+            <select name="choice">
+                <option value="rock">グー</option>
+                <option value="paper">パー</option>
+                <option value="scissors">チョキ</option>
+            </select>
+        </label>
+        <button type="submit">じゃんけんポン！</button>
+    </form>
+
+    {% if user_choice %}
+        <p>あなたの選択: {{ user_choice }}</p>
+        <p>相手の選択: {{ computer_choice }}</p>
+        <p>結果: {{ result }}</p>
+    {% endif %}
+</body>
+</html>
